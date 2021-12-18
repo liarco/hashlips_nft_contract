@@ -70,7 +70,7 @@ contract NFT is ERC721Enumerable, Ownable {
     uint256 ownerTokenCount = balanceOf(_owner);
     uint256[] memory tokenIds = new uint256[](ownerTokenCount);
     for (uint256 i; i < ownerTokenCount; i++) {
-      tokenIds[i] = tokenOfOwnerByIndex(_owner, i) + 1;
+      tokenIds[i] = tokenOfOwnerByIndex(_owner, i);
     }
     return tokenIds;
   }
