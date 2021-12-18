@@ -1,0 +1,26 @@
+name: Continuous integration
+
+on:
+  pull_request:
+    paths:
+    - .github/workflows/continuous_integration.yaml
+    - contracts/**
+    - tests/**
+    - package-lock.json
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: npm
+
+      - name: NPM install
+        run: npm install
+
+      - name: Run tests
+        run: npx hardhat test
